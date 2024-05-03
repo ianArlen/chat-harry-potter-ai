@@ -1,11 +1,9 @@
-// training.js
 const { NlpManager } = require('node-nlp');
-const dialogues = require('./dialogues'); // Asegúrate de que la ruta al archivo es correcta
+const dialogues = require('./dialogues');
 
 const manager = new NlpManager({ languages: ['es'] });
 
 async function trainAndSave() {
-    // Añadir diálogos al NlpManager
     dialogues.forEach(dialogue => {
         manager.addDocument('es', dialogue.query, dialogue.intent);
         manager.addAnswer('es', dialogue.intent, dialogue.answer);
